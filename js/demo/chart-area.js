@@ -1,105 +1,136 @@
-// const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-// const width = 600 - margin.left - margin.right;
-// const height = 400 - margin.top - margin.bottom;
+const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+const width = 960 - margin.left - margin.right;
+const height = 500 - margin.top - margin.bottom;
 
-// const svg = d3.select("#chart")
-//   .append("svg")
-//   .attr("width", width + margin.left + margin.right)
-//   .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+const svg = d3.select("#chart")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
 
-//   const x = d3.scaleBand().range([0, width]).padding(0.1);
-// const y = d3.scaleLinear().range([height, 0]);
+// Set up the scales and axes
+const x = d3.scaleBand()
+    .range([0, width])
+    .padding(0.1);
+const y = d3.scaleLinear()
+    .range([height, 0]);
 
-// // สร้าง x และ y axes
-// const xAxis = d3.axisBottom(x);
-// const yAxis = d3.axisLeft(y);
+const xAxis = d3.axisBottom(x);
 
-// // โหลดข้อมูลจากไฟล์ json
-// d3.json("/data/superhero_data_analysis.json").then(function(data) {
-//   // กำหนด domain ของ x และ y scales
-//   x.domain(data.map(function(d) { return d.Gender; }));
-//   y.domain([0, d3.max(data, function(d) { return d.Height; })]);
+const yAxis = d3.axisLeft(y)
+    .ticks(10);
 
-//   // เพิ่ม x axis และ y axis ลงใน svg element
-//   svg.append("g")
-//     .attr("class", "x-axis")
-//     .attr("transform", "translate(0," + height + ")")
-//     .call(xAxis);
+svg.append("g")
+    .attr("class", "x-axis")
+    .attr("transform", `translate(0,${height})`)
+    .call(xAxis);
 
-//   svg.append("g")
-//     .attr("class", "y-axis")
-//     .call(yAxis);
+svg.append("g")
+    .attr("class", "y-axis")
+    .call(yAxis);
 
-//   // เพิ่ม bars ลงใน svg element
-//   svg.selectAll(".bar")
-//     .data(data)
-//     .enter().append("rect")
-//     .attr("class", "bar")
-//     .attr("x", function(d) { return x(d.Gender); })
-//     .attr("y", function(d) { return y(d.Height); })
-//     .attr("width", x.bandwidth())
-//     .attr("height", function(d) { return height - y(d.Height); });
+// Load the data from the CSV file
+d3.csv("/data/").then(data => {
+    // Filter the data based on the default values of the UI controls
+    let filteredData = filterData(data);
 
-// กำหนดขนาดของกราฟและ margin
-// const margin = { top: 20, right: 20, bottom: 80, left: 80 };
-// const width = 600 - margin.left - margin.right;
-// const height = 400 - margin.top - margin.bottom;
+    // Set up the publisher and alignment UI controls
+    const publishers = [...new Set(data.map(d => d.Publisher))];
+    const publisherSelect = d3.select("#publisher-select")
+        .selectAll("option")
+        .data(publishers)
+        .enter()
+        .append("option")
+        .attr("value", d => d)
+        .text(d => d);
+    publisherSelect.on("change", () => {
+        filteredData = filterData(data);
+        updateChart(filteredData);
+    });
 
-// // สร้าง svg element และกำหนดขนาด
-// const svg = d3
-//   .select("#chart")
-//   .append("svg")
-//   .attr("width", width + margin.left + margin.right)
-//   .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//   .attr("transform", `translate(${margin.left}, ${margin.top})`);
+    const alignments = [...new Set(data.map(d => d.Alignment))];
+    const alignmentSelect = d3.select("#alignment-select")
+    .selectAll("option")
+    .data(alignments)
+    .enter()
+    .append("option")
+    .attr("value", d => d)
+    .text(d => d);
+alignmentSelect.on("change", () => {
+    filteredData = filterData(data);
+    updateChart(filteredData);
+});
 
-// // อ่านข้อมูลจากไฟล์ JSON
-// d3.json("/data/superhero_data_analysis.json").then(function (data) {
-//   // สร้าง scale สำหรับแกน x และ y
-//   const xScale = d3
-//     .scaleBand()
-//     .range([0, width])
-//     .domain(data.map((d) => d.Gender))
-//     .padding(0.2);
-//   const yScale = d3
-//     .scaleLinear()
-//     .range([height, 0])
-//     .domain([0, d3.max(data, (d) => d.Weight)]);
+// Set up the interval function to update the chart every second
+d3.interval(() => {
+    filteredData = filterData(data);
+    updateChart(filteredData);
+}, 1000);
 
-//   // สร้างแกน x และ y โดยใช้ axis function ของ D3.js
-//   const xAxis = d3.axisBottom(xScale);
-//   const yAxis = d3.axisLeft(yScale);
+// Define a function to filter the data based on the values of the UI controls
+function filterData(data) {
+    const selectedPublisher = publisherSelect.property("value");
+    const selectedAlignment = alignmentSelect.property("value");
+    let filteredData = data.filter(d => {
+        return (!selectedPublisher || d.Publisher === selectedPublisher)
+            && (!selectedAlignment || d.Alignment === selectedAlignment);
+    });
+    return filteredData;
+}
 
-//   svg
-//     .append("g")
-//     .attr("transform", `translate(0, ${height})`)
-//     .call(xAxis)
-//     .selectAll("text")
-//     .attr("transform", "rotate(-45)")
-//     .attr("text-anchor", "end")
-//     .attr("dx", "-0.8em")
-//     .attr("dy", "0.15em");
+// Define a function to update the chart with the filtered data
+function updateChart(data) {
+    // Calculate the height totals for each publisher and alignment
+    const heightTotals = d3.rollup(data, v => d3.sum(v, d => +d.Height), d => d.Publisher, d => d.Alignment);
 
-//   svg.append("g").call(yAxis);
+    // Convert the height totals into an array of objects for d3 to use
+    const heightData = Array.from(heightTotals, ([publisher, alignmentMap]) => {
+        const alignmentHeights = Array.from(alignmentMap, ([alignment, height]) => ({ alignment, height }));
+        return { publisher, alignmentHeights };
+    });
 
-//   // สร้างกราฟแท่งโดยใช้ rectangle element
-//   const bars = svg.selectAll("rect").data(data);
-//   bars
-//     .enter()
-//     .append("rect")
-//     .attr("x", (d) => xScale(d.Gender))
-//     .attr("y", (d) => yScale(d.Weight))
-//     .attr("width", xScale.bandwidth())
-//     .attr("height", (d) => height - yScale(d.Weight))
-//     .attr("fill", "steelblue");
-// //UI
-  
-// });
-// กำหนดขนาดของ SVG
+    // Set the domains of the scales
+    x.domain(publishers);
+    y.domain([0, d3.max(heightData, d => d3.max(d.alignmentHeights, d => d.height))]);
 
+    // Update the x-axis
+    svg.select(".x-axis")
+        .call(xAxis);
+
+    // Update the y-axis
+    svg.select(".y-axis")
+        .call(yAxis);
+
+    // Update the bars
+    const bars = svg.selectAll(".bar")
+        .data(heightData, d => d.publisher);
+
+    bars.exit()
+        .remove();
+
+    bars.enter()
+        .append("g")
+        .attr("class", "bar")
+        .attr("transform", d => `translate(${x(d.publisher)},0)`)
+        .merge(bars)
+        .selectAll("rect")
+        .data(d => d.alignmentHeights, d => d.alignment);
+
+    bars.selectAll("rect")
+        .transition()
+        .duration(500)
+        .attr("y", d => y(d.height))
+        .attr("height", d => height - y(d.height));
+
+    bars.enter()
+        .append("rect")
+        .attr("x", d => x.bandwidth() / 4)
+        .attr("width", x.bandwidth() / 2)
+        .attr("y", d => y(d.height))
+        .attr("height", d => height - y(d.height));
+
+}
+});
 
 
 
