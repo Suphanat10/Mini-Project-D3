@@ -1,41 +1,10 @@
-
-#chart {
-
-    margin: 0 auto;
-    padding: 20px;
-
- 
-  }
-  .bar {
-    fill: steelblue;
-  }
-  
-  .bar:hover {
-    fill: #1E90FF;
-  }
-  
-  .bar text {
-    font-size: 14px;
-    font-weight: bold;
-    fill: #fff;
-    text-anchor: middle;
-  }
-  .text {
-    font-size: 14px;
-    font-weight: bold;
-    text-anchor: middle;
-    fill: #fff;
-    padding-top: 10px;
-  }
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-  
-  .axis text {
-    font-size: 14px;
-    fill: #000;
-  }
-      
+#tooltip {
+  position: absolute;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  pointer-events: none;
+}
