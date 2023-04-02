@@ -35,7 +35,7 @@
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
@@ -61,46 +61,88 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
-        
-                 <div id="chart"></div>
-                    </div>
-                    <label for="heightSlider">Height Threshold (cm): </label>
-                    <input type="range" id="heightSlider" min="0" max="350" value="0">
-                    <span id="heightValue">0 cm</span>
-
-                    <h6>ตัวอย่างโค้ดด้านบนเป็นการสร้างกราฟแสดงความสัมพันธ์ระหว่างน้ำหนักและส่วนสูงของตัวละครซูเปอร์ฮีโร่ </h6>
-
-                    <div class="controls">
-                        <div class="control">
-                            <label for="hairColor">Hair Color:</label>
-                            <select id="hairColor">
-                                <option value="all">All</option>
-                                <!-- Add hair color options here -->
-                            </select>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">
+                                       จำนวน superhero ทั้งหมด </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800"><span id="total-count"></span> ตัว</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <svg id="Grouped-Bar-Chart"></svg>
-              
-
-
-
-
-
-
-                    </div> 
-
-             
-    
-            <!-- Footer
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer> -->
-            <!-- End of Footer -->
-
+                    <div class="row">
+                        <!-- Area Chart -->
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <div class="dropdown no-arrow">
+                                        <div id="chart">
+                                        </div>
+                                    <label for="heightSlider">Height Threshold (cm): </label>
+                                    <input type="range" id="heightSlider" min="0" max="350" value="0">
+                                    <span id="heightValue">0 cm</span>
+                                </div>       
+                                </div>
+                            </div>       
+                        </div>
+                         
+                        <!-- Pie Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                </div>
+                                    <div id="PieChart">
+                                    </div>
+                                    </div>
+                                      <label>
+                                        <input type="checkbox" id="showMale"> Show Male
+                                      </label>
+                                      <label>
+                                        <input type="checkbox" id="showFemale"> Show Female
+                                      </label>
+                                      <label>
+                                        <input type="checkbox" id="showOther"> Show Other
+                                      </label>
+                                    </div>
+                                </div>
+                                 <div class="card shadow mb-5">
+                                    <div class="card-header py-2">
+                                        <h5 class="m-0 font-weight-bold text-primary">อธิบาย concept Projects</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="controls">
+                                            <div class="control">
+                                                <label for="hairColor">Hair Color:</label>
+                                                <select id="hairColor">
+                                                    <option value="all">All</option>
+                                                     Add hair color options here 
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <svg id="Grouped-Bar-Chart"></svg>
+                                    </div> 
+                                    </div> 
+                   
+            <div class="card shadow mb-5">
+                                    <div class="card-header py-2">
+                                        <h5 class="m-0 font-weight-bold text-primary">อธิบาย concept Projects</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                            constantly updated collection of beautiful svg images that you can use
+                                            completely free and without attribution!</p>
+                                    </div> 
+                                </div>
         </div>
     </div>
 
@@ -112,11 +154,16 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
-
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="js/demo/PieChart.js"></script>
+
+    <script src="https://d3js.org/d3-timer.v1.min.js"></script>
     <script src="js/demo/chart.js"></script>
     <script src="js/demo/Grouped-Bar-Chart.js"></script>
-    <script src="js/demo/Pie-Chart.js"></script>
+    <script src="js/demo/bra-Chart.js"></script>
+    <script src="js/demo/total-count.js"></script>
+  
 </body>
 
 </html>

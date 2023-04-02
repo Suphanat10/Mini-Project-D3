@@ -12,8 +12,8 @@ d3.csv('/data/superhero_data_analysis.csv').then(data => {
 
 function createChart(data) {
     const margin = { top: 20, right: 20, bottom: 40, left: 60 };
-    const width = 1300- margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const width = 1450- margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     const svg = d3.select("#Grouped-Bar-Chart")
         .attr("width", width + margin.left + margin.right)
@@ -79,7 +79,7 @@ function createChart(data) {
     legend.selectAll("rect")
         .data(["Height", "Weight"])
         .enter().append("rect")
-        .attr("x", (d, i) => i * 60+22)
+        .attr("x", (d, i) => i * 60-10)
         .attr("y", -480)
         .attr("width", 18)
         .attr("height", 18)
@@ -88,7 +88,7 @@ function createChart(data) {
     legend.selectAll("text")
         .data(["Height", "Weight"])
         .enter().append("text")
-        .attr("x", (d, i) => i * 60 + 22)
+        .attr("x", (d, i) => i * 60 -10)
         .attr("y", -500)
         .attr("dy", ".50em")
         .text(d => d);

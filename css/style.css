@@ -2,3 +2,19 @@
   opacity: 0.9;
 
 }
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-size: 12px;
+}
+.line {
+    fill: none;
+    stroke-width: 2px;
+}
+.legend {
+    font-size: 12px;
+}
