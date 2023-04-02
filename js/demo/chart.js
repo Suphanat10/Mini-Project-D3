@@ -1,7 +1,7 @@
 (async function () {
   const data = await d3.csv("/data/superhero_data_analysis.csv");
   
-
+console.log(data);
   const width = 950;
   const height = 600;
   const margin = { top: 40, right: 100, bottom: 60, left: 60 };
