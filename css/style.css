@@ -1,10 +1,4 @@
-#tooltip {
-  position: absolute;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  pointer-events: none;
+.dot {
+  opacity: 0.9;
+
 }

@@ -8,11 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>mini project d3</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.css" integrity="sha512-wVJst0Zu/V7V0wHgIJrAhNPPoWnNBRFvjzgmBL+It4uvuDpjQN+1TnTnNlGQ+zkq3Mzb2QjJPNm6+X9wdzDD/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 </head>
  <!--================================================================================================================= -->
 <body id="page-top">
@@ -57,12 +61,16 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
+        
+                    <div id="chart"> </div>
+                    <label for="heightSlider">Height Threshold (cm): </label>
+                    <input type="range" id="heightSlider" min="0" max="350" value="0">
+                    <span id="heightValue">0 cm</span>
+
+                    <h6>ตัวอย่างโค้ดด้านบนเป็นการสร้างกราฟแสดงความสัมพันธ์ระหว่างน้ำหนักและส่วนสูงของตัวละครซูเปอร์ฮีโร่ </h6>
                 </div>
-                <div id="chart"></div>
-                
-         
-  
-                
+            </div>
+        
                 </div>
         
 
@@ -85,12 +93,11 @@
 
       
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="js/demo/chart-area.js"></script>
+    <script src="js/demo/chart-widt-height.js"></script>
     <script src="js/demo/chart-pie.js"></script>
 
 </body>
