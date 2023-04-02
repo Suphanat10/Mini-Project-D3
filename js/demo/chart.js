@@ -1,5 +1,6 @@
 (async function () {
   const data = await d3.csv("/data/superhero_data_analysis.csv");
+  
 
   const width = 950;
   const height = 600;

@@ -62,17 +62,28 @@
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
         
-                    <div id="chart"> </div>
+                    <div id="chart"></div>
+                    </div>
                     <label for="heightSlider">Height Threshold (cm): </label>
                     <input type="range" id="heightSlider" min="0" max="350" value="0">
                     <span id="heightValue">0 cm</span>
 
                     <h6>ตัวอย่างโค้ดด้านบนเป็นการสร้างกราฟแสดงความสัมพันธ์ระหว่างน้ำหนักและส่วนสูงของตัวละครซูเปอร์ฮีโร่ </h6>
-                </div>
-            </div>
-        
-                </div>
-        
+
+                    
+            
+
+              <div class="controls">
+                        <div class="control">
+                            <label for="hairColor">Hair Color:</label>
+                            <select id="hairColor">
+                                <option value="all">All</option>
+                             
+                         </select>
+                        </div>
+                    </div>
+                    <svg id="Grouped-Bar-Chart"></svg>
+                </div> 
 
             <!-- Footer
             <footer class="sticky-footer bg-white">
@@ -97,8 +108,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="js/demo/chart-widt-height.js"></script>
-    <script src="js/demo/chart-pie.js"></script>
+    <script src="js/demo/chart.js"></script>
+    <script src="js/demo/Grouped-Bar-Chart.js"></script>
 
 </body>
 
