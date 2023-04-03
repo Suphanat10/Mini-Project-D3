@@ -42,10 +42,6 @@
             <hr class="sidebar-divider">
         </ul>
      <!--============================================================================================= -->
-
-
-
-
 <!--================================================================================================= -->
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
@@ -53,72 +49,101 @@
                         <div class="topbar-divider d-none d-sm-block"></div>
                 </nav>
 <!--================================================================================================== -->
+<div class="container-fluid">
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-xl-8 col-lg-6">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="dropdown no-arrow">
+                 <h6 class="m-0 font-weight-bold text-primary">BraChart </h6>
                     </div>
-                  
-
-
-
-
-
-
-
-
-
-
-                    <div class="row">
-                        <!-- Area Chart -->
-                        <div class="col-xl-12 col-lg-7">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <div class="dropdown no-arrow">
-               
-                                    
-                                    </div>
-                          <label> Filter by Gender:<select id="gender-select">
-                <option value="All">All</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </label></div>
-        <svg width="960" height="500"></svg>     
-                                </div>
-                            </div>       
-                        </div>
-                                <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="dataTable_length">
-                                
-                                                     
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                
-
+                       <label> Filter by Gender:<select id="gender-select">
+                        <option value="All">All</option>
+                           <option value="Male">Male</option>
+                             <option value="Female">Female</option>
+                           </select>
+                           </label></div>
+                            <div id ="chart-1"  width="960" height="500"></div>     
+                </div>
+            </div>       
+       <!-- Pie Chart -->
+       <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">อธิบาย </h6>
+            </div>
+            <div class="card-body">
+            <div class="h6 mb-0 font-weight-bold text-gray-800">  4.  กราฟแท่งแสดงจำนวนของซูเปอร์ฮีโร่ตามสีตา </div> 
+                            <p>กราฟแท่งแสดงจำนวนของซูเปอร์ฮีโร่ตามสีตา และกราฟถูกสร้างขึ้นเรียบร้อยแล้ว จะมี UI control เป็น drop-down menu ที่มีตัวเลือก "All" และ "Male" หรือ "Female" เพื่อกรองข้อมูลและแสดงแผนภูมิแท่งเฉพาะเพศที่เลือกโดยกราฟแท่งจะเปลี่ยนสีเมื่อเมาส์ชี้ไปที่แท่ง และกลับมาเป็นสีเดิมเมื่อเมาส์ออกไป
+                                </p>
+                                <a href="#" class="btn btn-success btn-circle btn-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                      </svg>
+                    </a>
+            </div>
         </div>
     </div>
-
+</div>
+<br>
+<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+<br>
+<p class="mb-4">ตัวอย่างข้อมูล จากไฟล์  CSV  ซึ่งประกอบด้วยข้อมูลต่างๆ ( Gender, Eye color, Race, Hair color, Height, Publisher, Skin color, Alignment, Weight) </p>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="dataTable_length">
+                                    <label>Show 
+                                        <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> 
+                                        entries
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="dataTable_filter" class="dataTables_filter">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered dataTable" id="superhero-table" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1">Gender</th>
+                                <th rowspan="1" colspan="1">Eye color</th>
+                                <th rowspan="1" colspan="1">Race</th>
+                                <th rowspan="1" colspan="1">Hair color</th>
+                                <th rowspan="1" colspan="1">Height</th>
+                                <th rowspan="1" colspan="1">Publisher</th>
+                                <th rowspan="1" colspan="1">Skin color</th>
+                                <th rowspan="1" colspan="1">Alignment</th>
+                                <th rowspan="1" colspan="1">Weight</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                        </tfoot>
+                        <tbody>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -129,6 +154,9 @@
     <!-- <script src="js/demo/chart.js"></script>
     <script src="js/demo/Grouped-Bar-Chart.js"></script> -->
     <script src="js/demo/bra-Chart.js"></script>
+    <script src="js/demo/data.js"></script>
+    
+
 
   
 </body>
